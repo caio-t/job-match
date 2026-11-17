@@ -32,7 +32,12 @@ You ask for jobs. `job-match` then:
 5. **Lists the top 10**, or the number you ask for. Each entry has match stars, the reasons it fits,
    your gaps and a direct link.
 
-It only searches and lists. It never applies, fills in forms or sends messages unless you ask.
+6. **Writes a tailored CV on request.** Ask for "the CV for job #1" and it first asks about any
+   requirement your CV doesn't show. It then writes an A4 CV in the posting's language that puts the
+   matching experience first, saves it as PDF in your folder and lists the gaps it left out.
+
+By default it only searches and lists. It never applies, fills in forms or sends messages unless
+you ask.
 
 ### Install
 
@@ -60,6 +65,12 @@ Top 5 remote Node.js / TypeScript jobs that fit my CV
 
 ```text
 Which tech lead roles in Portugal match me best? Ignore anything that needs French.
+```
+
+After the list, ask for a tailored CV (and, if you want, a cover letter):
+
+```text
+Make the CV for job #1, and a short cover letter
 ```
 
 You can also call it directly:
@@ -94,7 +105,9 @@ I couldn't find a CV in this folder. Where should I get your profile from?
 ### Principles
 
 - **Only facts from your CV.** A skill the job asks for and your CV doesn't show counts as a gap, not
-  a match.
+  a match. Tailored CVs reorder and emphasise; they never add years, titles or degrees you don't have.
+- **CVs stay in your folder.** They hold your phone and email, so they are never written into the
+  skill, and you are warned if the folder is a git repository.
 - **The source of truth is the company page.** Aggregator listings are checked there, because
   aggregators keep closed jobs.
 - **Empty fields stay empty.** A posting that doesn't state its work model shows "not stated" instead
@@ -120,7 +133,11 @@ Pedes vagas e o `job-match`:
 5. **Lista as 10 melhores**, ou o número que pedires, com estrelas, o porquê, as tuas lacunas e o link
    direto.
 
-Só pesquisa e lista. Nunca se candidata, não preenche formulários nem envia mensagens sem pedires.
+6. **Cria um CV à medida, se pedires.** Pergunta primeiro pelos requisitos que o CV não mostra e gera
+   um PDF A4 no idioma da vaga, com a experiência relevante em destaque e as lacunas listadas.
+
+Por omissão só pesquisa e lista. Nunca se candidata, não preenche formulários nem envia mensagens sem
+pedires.
 
 ### Exemplos de uso
 
@@ -134,6 +151,10 @@ Liste as 10 principais vagas da Aubay com match no meu perfil
 
 ```text
 Quais vagas de tech lead em Portugal têm mais match comigo? Ignora as que pedem francês.
+```
+
+```text
+Faz o CV para a vaga #2 e uma carta de apresentação curta
 ```
 
 ```text

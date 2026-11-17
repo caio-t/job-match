@@ -1,13 +1,13 @@
 ---
 name: job-match
-description: Procura vagas de emprego e ordena-as pelo match com o CV do utilizador — numa empresa específica (ex. "vagas da Aubay") ou no mercado em geral. Lê o CV da pasta onde a sessão começou; se não houver, pede o CV ou lê o perfil do LinkedIn. Lista 10 vagas por omissão (ou o número pedido) com local, regime, match, porquê, lacunas e link. Use quando o utilizador pede vagas, oportunidades, "jobs que combinam comigo", "top N vagas na empresa X", ou o match do perfil com vagas.
+description: Procura vagas de emprego e ordena-as pelo match com o CV do utilizador — numa empresa específica (ex. "vagas da Aubay") ou no mercado em geral. Lê o CV da pasta onde a sessão começou; se não houver, pede o CV ou lê o perfil do LinkedIn. Lista 10 vagas por omissão (ou o número pedido) com local, regime, match, porquê, lacunas e link. A pedido, cria um CV em PDF à medida de uma vaga, só com factos do CV. Use quando o utilizador pede vagas, oportunidades, "jobs que combinam comigo", "top N vagas na empresa X", o match do perfil com vagas, ou "faz o CV para a vaga X".
 ---
 
 # Job Match
 
 Encontra as vagas abertas que mais combinam com o perfil do utilizador e lista-as por ordem de match.
-A skill **só pesquisa e lista**. Candidatar, criar CVs à medida ou preencher formulários são passos
-seguintes, que só acontecem quando o utilizador os pede.
+Por omissão a skill **só pesquisa e lista** (passos 1 a 4). O CV à medida (passo 5) só acontece quando
+o utilizador o pede. Candidatar e preencher formulários ficam fora da skill e exigem pedido explícito.
 
 ## Entradas
 
@@ -112,11 +112,51 @@ Depois da tabela:
 - **Avisos**: datas antigas, regime por confirmar, vagas vistas só em agregadores.
 - **Fontes**: lista em markdown dos URLs usados.
 
+## Passo 5 — CV à medida (só a pedido)
+
+Corre quando o utilizador pede um CV para uma vaga (ex. "faz o CV para a #1", "CV para a vaga de
+Tech Lead"). Se a vaga não estiver na lista desta sessão, pede o link e lê a descrição completa primeiro.
+
+1. **Cruza a vaga com o perfil do passo 1.** Separa:
+   - *encaixes*: requisitos da vaga que o CV prova (com anos, quando o CV os dá);
+   - *lacunas*: requisitos que o CV não mostra.
+2. **Pergunta pelas lacunas importantes antes de escrever** (AskUserQuestion, até 4 de cada vez):
+   "A vaga pede X. Tens experiência? Quantos anos?". Só o que o utilizador confirmar entra no CV,
+   com as palavras e os anos que ele der. Sem resposta, fica de fora.
+3. **Escreve o CV no idioma da vaga** (vaga em inglês → CV em inglês), a partir de
+   [templates/cv-template.html](templates/cv-template.html):
+   - **Título**: o cargo da vaga + as 3 ou 4 tecnologias principais que o utilizador tem.
+   - **Resumo** (3 a 4 linhas): anos de experiência, foco atual e as tecnologias pedidas que tem.
+   - **Pontos fortes para a vaga**: 4 a 5 bullets, cada um ligado a um requisito da vaga.
+   - **Experiência**: todos os empregos do CV, sem cortar períodos; nos relevantes, põe primeiro os
+     bullets e projetos com a stack da vaga. Não mudes cargos, empresas nem datas.
+   - **Competências**: agrupadas, com as pedidas pela vaga primeiro; mantém os anos do CV.
+   - **Formação e línguas**: exatamente como no CV.
+   - Cabe em 2 páginas A4.
+4. **Gera o PDF** com o Chrome/Edge em modo headless, a partir do HTML:
+   - Windows: `"C:/Program Files/Google/Chrome/Application/chrome.exe"`
+   - macOS: `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"`
+   - Linux: `google-chrome` ou `chromium`
+
+   ```bash
+   "<chrome>" --headless=new --disable-gpu --no-pdf-header-footer \
+     --print-to-pdf="<pasta>/<ficheiro>.pdf" "file:///<pasta>/<ficheiro>.html"
+   ```
+   Abre o PDF (Read) e confirma que o layout está bem e que tem no máximo 2 páginas.
+5. **Guarda na pasta onde a sessão começou**, com o nome `<nome>_cv_<empresa>_<vaga>.html` e `.pdf`
+   (minúsculas, `_` entre palavras). Nunca na pasta desta skill. Se a pasta for um repositório git,
+   não faças commit dos CVs (têm telefone e e-mail) e avisa o utilizador.
+6. **Responde com**: o caminho do PDF, o que puseste em destaque e porquê, e as **lacunas que ficaram
+   de fora** para o utilizador confirmar.
+7. **Carta de apresentação**, só se for pedida: 3 parágrafos curtos (porquê esta empresa e vaga,
+   2 ou 3 provas do CV ligadas aos requisitos, disponibilidade), no mesmo estilo e com o nome
+   `<nome>_cover_letter_<empresa>.pdf`.
+
 ## Regras
 
 - Só factos do CV. Uma competência que a vaga pede e o CV não mostra é uma lacuna, mesmo que pareça
   provável que o utilizador a tenha. Se quiseres saber, pergunta.
 - Não te candidates a nada, não preenchas formulários e não envies mensagens sem pedido explícito.
-- Se for pedido um CV à medida de uma vaga, cria-o só com factos dos CVs existentes e mostra as
-  lacunas que deixaste de fora, para o utilizador confirmar se tem essa experiência.
+- No CV à medida, não inventes nem aumentes nada: nem anos, nem cargos, nem certificações, nem graus
+  académicos. Um curso não concluído aparece como tal (ex. "Master's coursework in ...").
 - Não guardes dados pessoais do utilizador (telefone, e-mail, morada) em ficheiros desta skill.

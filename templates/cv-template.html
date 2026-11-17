@@ -1,0 +1,61 @@
+<!doctype html>
+<!--
+  job-match CV template (A4, prints to PDF with headless Chrome).
+  Replace every {{PLACEHOLDER}} with facts from the user's CV. Repeat or remove
+  <h3>/<ul> blocks as needed. Keep personal data out of this file: it is filled
+  in a copy saved in the user's folder, never here.
+-->
+<html lang="{{LANG}}">
+<head>
+<meta charset="utf-8">
+<title>{{FULL_NAME}} - CV ({{JOB_TITLE}})</title>
+<style>
+  @page { size: A4; margin: 16mm 18mm; }
+  body { font-family: Calibri, "Segoe UI", Arial, sans-serif; font-size: 10.5pt; line-height: 1.33; color: #111; margin: 0; }
+  h1 { font-size: 24pt; font-weight: 400; color: #1f3864; margin: 0 0 4px; padding-bottom: 5px; border-bottom: 1.5px solid #2f5496; }
+  h2 { font-size: 12.5pt; color: #2f5496; margin: 13px 0 5px; }
+  h3 { font-size: 11pt; color: #4472c4; margin: 10px 0 2px; }
+  p { margin: 0 0 3px; }
+  ul { margin: 3px 0 0; padding-left: 18px; }
+  li { margin: 1px 0; }
+  .meta p { margin: 0 0 3px; }
+  .sub { color: #444; font-size: 10pt; }
+</style>
+</head>
+<body>
+<h1>{{FULL_NAME}}</h1>
+<div class="meta">
+<p><b>{{HEADLINE}}</b></p>
+<p>{{LOCATION}} · {{PHONE}} · {{EMAIL}}</p>
+<p>LinkedIn: {{LINKEDIN_URL}} · GitHub: {{GITHUB_URL}}</p>
+</div>
+
+<h2>Summary</h2>
+<p>{{SUMMARY}}</p>
+
+<h2>Key Strengths for this Role</h2>
+<ul>
+  <li><b>{{STRENGTH_1_TITLE}}:</b> {{STRENGTH_1}}</li>
+  <li><b>{{STRENGTH_2_TITLE}}:</b> {{STRENGTH_2}}</li>
+  <li><b>{{STRENGTH_3_TITLE}}:</b> {{STRENGTH_3}}</li>
+  <li><b>{{STRENGTH_4_TITLE}}:</b> {{STRENGTH_4}}</li>
+</ul>
+
+<h2>Professional Experience</h2>
+
+<h3>{{COMPANY}} — {{ROLE}}</h3>
+<p class="sub">{{JOB_LOCATION}} · {{PERIOD}}</p>
+<ul>
+  <li>{{ACHIEVEMENT}}</li>
+</ul>
+
+<h2>Technical Skills</h2>
+<p><b>{{SKILL_GROUP}}:</b> {{SKILLS}}</p>
+
+<h2>Education</h2>
+<p><b>{{DEGREE}}</b> — {{INSTITUTION}} — {{YEAR}}</p>
+
+<h2>Languages</h2>
+<p>{{LANGUAGES}}</p>
+</body>
+</html>
