@@ -1,30 +1,145 @@
 # job-match
 
-A [Claude Code](https://claude.com/claude-code) skill that finds open job postings and ranks them by
-how well they match your CV.
+> A Claude Code skill that reads your CV, searches for open jobs and ranks them by how well they fit you.
+> It reads every posting in full and shows the gaps along with the matches.
 
-- Reads your CV from the folder where the session starts (PDF, DOCX, HTML, Markdown, or profile data
-  in code). With no CV there, it asks for one or reads your LinkedIn profile.
-- Searches a specific company's careers page (e.g. "the Aubay openings") or the job boards that fit
-  your region (Portugal, Brazil, remote, and others).
-- Reads each posting in full and scores it on required tech, seniority, role type, location and work
-  model, skipping postings with hard blockers such as a required language you don't speak.
-- Lists 10 postings by default, or the number you ask for, with match, reasons, gaps and direct links.
+[Português](#português) · [English](#english)
 
-It only searches and lists. Applying or tailoring a CV happens only when you ask for it.
+---
 
-## Install
+## English
 
-Copy the `job-match` folder into your Claude Code skills directory:
+### What it does
+
+You ask for jobs. `job-match` then:
+
+1. **Reads your CV** from the folder where the Claude Code session started. That can be PDF, DOCX,
+   HTML, Markdown, or profile data in code such as `profile.ts` or `resume.json`. With no CV there,
+   it asks you for one or reads your LinkedIn profile in your browser.
+2. **Searches the right sources.** For a named company it starts with that company's careers page.
+   Otherwise it uses the boards that work best for your region:
+
+   | Region | Sources |
+   |---|---|
+   | Portugal | ITJobs.pt, LinkedIn Jobs, Landing.jobs, Net-Empregos, Indeed, Glassdoor |
+   | Brazil | LinkedIn Jobs, Gupy, Programathor, Indeed, Glassdoor, Catho |
+   | Remote | LinkedIn Jobs, We Work Remotely, Remote OK, Wellfound, Otta |
+
+3. **Reads each posting in full**, not just the title. It scores required tech, seniority, role type,
+   location and work model.
+4. **Drops postings with hard blockers**, such as a required language you don't speak or a core stack
+   you've never used, and tells you what it dropped.
+5. **Lists the top 10**, or the number you ask for. Each entry has match stars, the reasons it fits,
+   your gaps and a direct link.
+
+It only searches and lists. It never applies, fills in forms or sends messages unless you ask.
+
+### Install
 
 ```bash
 git clone https://github.com/<your-user>/job-match ~/.claude/skills/job-match
 ```
 
-## Use
+Restart Claude Code (or open a new session) and the skill is available.
 
-Open Claude Code in the folder that holds your CV and ask, for example:
+### Usage examples
 
-- "Lista as 10 principais vagas da Aubay com match no meu perfil"
-- "Top 5 remote Node.js jobs that match my CV"
-- "/job-match 15 vagas em Lisboa"
+Open Claude Code in the folder that holds your CV, then ask in plain language:
+
+```text
+List the top 10 openings at Aubay that match my profile
+```
+
+```text
+Top 5 remote Node.js / TypeScript jobs that fit my CV
+```
+
+```text
+15 senior .NET jobs in Lisbon or Porto, hybrid is fine
+```
+
+```text
+Which tech lead roles in Portugal match me best? Ignore anything that needs French.
+```
+
+You can also call it directly:
+
+```text
+/job-match 20 jobs in Berlin, English-speaking teams
+```
+
+With no CV in the folder, it asks first:
+
+```text
+I couldn't find a CV in this folder. Where should I get your profile from?
+  1. Path to a CV file
+  2. Read my LinkedIn profile
+```
+
+### Example output
+
+```markdown
+| # | Job | Location · Model | Match | Why |
+|---|---|---|---|---|
+| 1 | Node.js Tech Lead | Porto · Hybrid | ⭐⭐⭐⭐⭐ | Node.js, Angular, TypeScript and SQL Server: all on your CV. Asks for 5+ yrs and mentoring. Gap: AWS SAM. |
+| 2 | .NET / Angular Developer | Lisbon · not stated | ⭐⭐⭐⭐ | C# .NET, Angular, Azure DevOps. Gap: Azure Functions. |
+| 3 | Senior Backend (.NET & Azure) | Lisbon · not stated | ⭐⭐⭐⭐ | Microservices, messaging, Docker, tests. Gap: Kubernetes. |
+| … | | | | |
+
+**Recommendation:** apply to #1 now with your Node.js CV, and put Angular and SQL Server in the summary.
+**Dropped:** roles that require French, SAP/Dynamics functional roles, junior roles.
+**Warnings:** #2 doesn't say whether it is hybrid, so confirm with the recruiter.
+```
+
+### Principles
+
+- **Only facts from your CV.** A skill the job asks for and your CV doesn't show counts as a gap, not
+  a match.
+- **The source of truth is the company page.** Aggregator listings are checked there, because
+  aggregators keep closed jobs.
+- **Empty fields stay empty.** A posting that doesn't state its work model shows "not stated" instead
+  of a guess.
+- **No personal data is stored** in the skill.
+
+---
+
+## Português
+
+### O que faz
+
+Pedes vagas e o `job-match`:
+
+1. **Lê o teu CV** na pasta onde a sessão do Claude Code começou. Pode ser PDF, DOCX, HTML, Markdown ou
+   dados de perfil no código. Se não houver nenhum, pede-te o CV ou lê o teu perfil do LinkedIn no
+   browser.
+2. **Procura nas fontes certas.** Com uma empresa indicada, começa pela página de carreiras dela. Sem
+   empresa, usa os melhores sites da tua região (ITJobs, Landing.jobs, Gupy, LinkedIn Jobs…).
+3. **Lê cada vaga completa** e pontua tecnologias obrigatórias, senioridade, tipo de cargo, local e
+   regime.
+4. **Exclui as vagas com bloqueios**, como uma língua obrigatória que não falas, e diz quais excluiu.
+5. **Lista as 10 melhores**, ou o número que pedires, com estrelas, o porquê, as tuas lacunas e o link
+   direto.
+
+Só pesquisa e lista. Nunca se candidata, não preenche formulários nem envia mensagens sem pedires.
+
+### Exemplos de uso
+
+```text
+Liste as 10 principais vagas da Aubay com match no meu perfil
+```
+
+```text
+5 vagas remotas de Node.js que combinem com o meu CV
+```
+
+```text
+Quais vagas de tech lead em Portugal têm mais match comigo? Ignora as que pedem francês.
+```
+
+```text
+/job-match 15 vagas de .NET em Lisboa ou Porto
+```
+
+## License
+
+MIT
