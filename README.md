@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" alt="job-match logo" width="128" height="128">
+</p>
+
 # job-match
 
 > A Claude Code skill that reads your CV, searches for open jobs and ranks them by how well they fit you.
