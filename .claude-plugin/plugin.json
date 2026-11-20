@@ -17,5 +17,8 @@
     "resume",
     "job-search"
   ],
-  "icon": "./assets/logo.png"
+  "icon": "./assets/logo.png",
+  "documentationUrl": "https://github.com/caio-t/job-match#readme",
+  "supportUrl": "https://github.com/caio-t/job-match/issues",
+  "privacyPolicyUrl": "https://github.com/caio-t/job-match/blob/main/PRIVACY.md"
 }
