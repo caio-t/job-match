@@ -21,7 +21,7 @@ You ask for jobs. `job-match` then:
 
 1. **Reads your CV** from the folder where the Claude Code session started. That can be PDF, DOCX,
    HTML, Markdown, or profile data in code such as `profile.ts` or `resume.json`. With no CV there,
-   it asks you for one or reads your LinkedIn profile in your browser.
+   it asks you for one, or for your LinkedIn profile saved as PDF.
 2. **Searches the right sources.** For a named company it starts with that company's careers page.
    Otherwise it uses the boards that work best for your region:
 
@@ -100,7 +100,7 @@ With no CV in the folder, it asks first:
 ```text
 I couldn't find a CV in this folder. Where should I get your profile from?
   1. Path to a CV file
-  2. Read my LinkedIn profile
+  2. Use my LinkedIn profile (saved as PDF or pasted)
 ```
 
 ### Example output
@@ -129,6 +129,9 @@ I couldn't find a CV in this folder. Where should I get your profile from?
 - **Empty fields stay empty.** A posting that doesn't state its work model shows "not stated" instead
   of a guess.
 - **No personal data is stored** in the skill.
+- **Sites' terms are respected.** It never logs in, never browses LinkedIn, Indeed or Glassdoor on its
+  own (their terms forbid automated access) and uses only what search results show for them. It
+  prefers company career pages and the public job feeds of recruiting platforms.
 
 ---
 
@@ -139,8 +142,8 @@ I couldn't find a CV in this folder. Where should I get your profile from?
 Pedes vagas e o `job-match`:
 
 1. **Lê o teu CV** na pasta onde a sessão do Claude Code começou. Pode ser PDF, DOCX, HTML, Markdown ou
-   dados de perfil no código. Se não houver nenhum, pede-te o CV ou lê o teu perfil do LinkedIn no
-   browser.
+   dados de perfil no código. Se não houver nenhum, pede-te o CV ou o teu perfil do LinkedIn
+   guardado em PDF.
 2. **Procura nas fontes certas.** Com uma empresa indicada, começa pela página de carreiras dela. Sem
    empresa, usa os melhores sites da tua região (ITJobs, Landing.jobs, Gupy, LinkedIn Jobs…).
 3. **Lê cada vaga completa** e pontua tecnologias obrigatórias, senioridade, tipo de cargo, local e
