@@ -58,7 +58,7 @@ plan.
 ```
 
 On older versions, run `/plugin marketplace add caio-t/job-match` and then
-`/plugin install job-match@job-match`. To install by hand instead, copy the skill folder:
+`/plugin install job-match@caio-teixeira`. To install by hand instead, copy the skill folder:
 
 ```bash
 git clone https://github.com/caio-t/job-match
@@ -165,7 +165,7 @@ pedires.
   procura **Job Match** e adiciona. Anexa o CV à conversa quando pedires vagas. Precisa de um plano
   pago.
 - **Claude Code:** corre `/plugin install job-match --marketplace caio-t/job-match` (em versões
-  antigas: `/plugin marketplace add caio-t/job-match` e depois `/plugin install job-match@job-match`),
+  antigas: `/plugin marketplace add caio-t/job-match` e depois `/plugin install job-match@caio-teixeira`),
   ou copia a pasta
   `skills/job-match` deste repositório para `~/.claude/skills/job-match`.
 

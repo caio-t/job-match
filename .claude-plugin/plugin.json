@@ -10,5 +10,12 @@
   "homepage": "https://github.com/caio-t/job-match",
   "repository": "https://github.com/caio-t/job-match",
   "license": "MIT",
-  "keywords": ["jobs", "career", "cv", "resume", "job-search"]
+  "keywords": [
+    "jobs",
+    "career",
+    "cv",
+    "resume",
+    "job-search"
+  ],
+  "icon": "./assets/logo.png"
 }
