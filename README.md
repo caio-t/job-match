@@ -49,8 +49,14 @@ you ask.
 search for **Job Match** and add it. Attach your CV to the chat when you ask for jobs. Needs a paid
 plan.
 
-**Claude Code:** run `/plugin directory` and add **Job Match**. To install by hand instead, copy the
-skill folder:
+**Claude Code:** install it from this repository in one step:
+
+```text
+/plugin install job-match --marketplace caio-t/job-match
+```
+
+On older versions, run `/plugin marketplace add caio-t/job-match` and then
+`/plugin install job-match@job-match`. To install by hand instead, copy the skill folder:
 
 ```bash
 git clone https://github.com/caio-t/job-match
@@ -156,7 +162,9 @@ pedires.
 - **App do Claude (claude.ai, desktop, telemóvel) e Cowork:** em **Customize → Plugins → Discover**,
   procura **Job Match** e adiciona. Anexa o CV à conversa quando pedires vagas. Precisa de um plano
   pago.
-- **Claude Code:** corre `/plugin directory` e adiciona **Job Match**, ou copia a pasta
+- **Claude Code:** corre `/plugin install job-match --marketplace caio-t/job-match` (em versões
+  antigas: `/plugin marketplace add caio-t/job-match` e depois `/plugin install job-match@job-match`),
+  ou copia a pasta
   `skills/job-match` deste repositório para `~/.claude/skills/job-match`.
 
 ### Exemplos de uso
