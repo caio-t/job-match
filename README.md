@@ -192,9 +192,9 @@ Faz o CV para a vaga #2 e uma carta de apresentação curta
 
 ## Self-install edition (unsupported, at your own risk)
 
-The original edition of this skill is kept on the
-[`self-install` branch](https://github.com/caio-t/job-match/tree/self-install). It is **not** part of
-the plugin above, was **not reviewed by Anthropic** and installs only by hand.
+The original edition of this skill is kept in a separate repository,
+[caio-t/job-match-self-install](https://github.com/caio-t/job-match-self-install). It is **not** part
+of the plugin above, was **not reviewed by Anthropic** and installs only by hand.
 
 > [!CAUTION]
 > That edition drives your own browser on LinkedIn and job sites and can call pages' internal
@@ -203,8 +203,8 @@ the plugin above, was **not reviewed by Anthropic** and installs only by hand.
 > your own risk and are solely responsible for complying with each site's terms and the law.** It is
 > provided "as is", without warranty, and the author accepts no liability.
 
-**Português:** a edição original está no
-[branch `self-install`](https://github.com/caio-t/job-match/tree/self-install). Não faz parte do
+**Português:** a edição original está num repositório à parte,
+[caio-t/job-match-self-install](https://github.com/caio-t/job-match-self-install). Não faz parte do
 plugin, não foi revista pela Anthropic e **instalas e usas por tua conta e risco**: pode violar os
 termos de uso do LinkedIn, do Indeed e do Glassdoor, e és o único responsável por isso.
 
