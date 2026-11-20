@@ -58,12 +58,8 @@ plan.
 ```
 
 On older versions, run `/plugin marketplace add caio-t/job-match` and then
-`/plugin install job-match@caio-teixeira`. To install by hand instead, copy the skill folder:
-
-```bash
-git clone https://github.com/caio-t/job-match
-cp -r job-match/skills/job-match ~/.claude/skills/job-match
-```
+`/plugin install job-match@caio-teixeira`. To install by hand instead, copy the `skills/job-match`
+folder of this repository to `~/.claude/skills/job-match`.
 
 Restart Claude Code (or open a new session) and the skill is available.
 

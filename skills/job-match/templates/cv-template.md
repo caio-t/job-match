@@ -1,3 +1,8 @@
+# CV template (A4)
+
+Copy the HTML below into `<name>_cv_<company>_<role>.html`, fill in the placeholders and print it to PDF.
+
+```html
 <!doctype html>
 <!--
   job-match CV template (A4, prints to PDF with headless Chrome).
@@ -59,3 +64,5 @@
 <p>{{LANGUAGES}}</p>
 </body>
 </html>
+
+```

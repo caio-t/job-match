@@ -132,7 +132,7 @@ Tech Lead"). Se a vaga não estiver na lista desta sessão, pede o link e lê a 
    "A vaga pede X. Tens experiência? Quantos anos?". Só o que o utilizador confirmar entra no CV,
    com as palavras e os anos que ele der. Sem resposta, fica de fora.
 3. **Escreve o CV no idioma da vaga** (vaga em inglês → CV em inglês), a partir de
-   [templates/cv-template.html](templates/cv-template.html):
+   [templates/cv-template.md](templates/cv-template.md) (o HTML do modelo está no bloco de código):
    - **Título**: o cargo da vaga + as 3 ou 4 tecnologias principais que o utilizador tem.
    - **Resumo** (3 a 4 linhas): anos de experiência, foco atual e as tecnologias pedidas que tem.
    - **Pontos fortes para a vaga**: 4 a 5 bullets, cada um ligado a um requisito da vaga.
