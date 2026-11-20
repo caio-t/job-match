@@ -7,6 +7,8 @@
 > A Claude Code skill that reads your CV, searches for open jobs and ranks them by how well they fit you.
 > It reads every posting in full and shows the gaps along with the matches.
 
+Made by **Caio Teixeira** · [LinkedIn](https://www.linkedin.com/in/caio-teixeira-espirito-santo/) · [GitHub](https://github.com/caio-t)
+
 [Português](#português) · [English](#english)
 
 ---
@@ -188,6 +190,10 @@ Faz o CV para a vaga #2 e uma carta de apresentação curta
 ```text
 /job-match 15 vagas de .NET em Lisboa ou Porto
 ```
+
+## Author
+
+**Caio Teixeira** · [LinkedIn](https://www.linkedin.com/in/caio-teixeira-espirito-santo/) · [GitHub](https://github.com/caio-t)
 
 ## License
 
