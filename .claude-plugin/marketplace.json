@@ -1,0 +1,22 @@
+{
+  "name": "job-match",
+  "owner": {
+    "name": "Caio Teixeira",
+    "url": "https://github.com/caio-t"
+  },
+  "metadata": {
+    "description": "Job Match: find open jobs that fit your CV and get a tailored CV for each one."
+  },
+  "plugins": [
+    {
+      "name": "job-match",
+      "source": "./",
+      "description": "Reads your CV, searches open jobs at a company or across the market, ranks them by fit with the gaps spelled out, and writes a tailored A4 CV for a chosen posting using only facts from your CV.",
+      "version": "1.0.0",
+      "author": { "name": "Caio Teixeira", "url": "https://github.com/caio-t" },
+      "homepage": "https://github.com/caio-t/job-match",
+      "license": "MIT",
+      "category": "productivity"
+    }
+  ]
+}
