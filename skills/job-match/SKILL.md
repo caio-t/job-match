@@ -9,6 +9,14 @@ Encontra as vagas abertas que mais combinam com o perfil do utilizador e lista-a
 Por omissão a skill **só pesquisa e lista** (passos 1 a 4). O CV à medida (passo 5) só acontece quando
 o utilizador o pede. Candidatar e preencher formulários ficam fora da skill e exigem pedido explícito.
 
+## Onde corre
+
+A skill funciona no Claude Code e na app do Claude (claude.ai, desktop, telemóvel). Na app:
+- não há pasta de trabalho: usa o CV **anexado à conversa**; se não houver, pede-o;
+- onde o texto fala em AskUserQuestion, faz a pergunta no chat;
+- sem o Claude in Chrome ligado, pede ao utilizador que cole o texto do perfil ou da vaga;
+- os ficheiros gerados (CV, carta) entregam-se para **descarregar**, não se gravam numa pasta.
+
 ## Entradas
 
 Tira do pedido do utilizador (pergunta só o que for indispensável):
@@ -22,7 +30,7 @@ Tira do pedido do utilizador (pergunta só o que for indispensável):
 
 ## Passo 1 — Perfil do utilizador
 
-1. **Procura o CV na pasta onde a sessão começou** (o diretório de trabalho principal), sem descer a
+1. **Procura o CV na pasta onde a sessão começou** (na app do Claude: nos ficheiros anexados) (o diretório de trabalho principal), sem descer a
    `node_modules`, `.git`, `.next` ou pastas de build:
    - ficheiros `*.pdf`, `*.docx`, `*.html`, `*.md` com `cv`, `resume`, `curriculo`, `currículo` ou o nome
      da pessoa no nome do ficheiro;
@@ -142,8 +150,10 @@ Tech Lead"). Se a vaga não estiver na lista desta sessão, pede o link e lê a 
    "<chrome>" --headless=new --disable-gpu --no-pdf-header-footer \
      --print-to-pdf="<pasta>/<ficheiro>.pdf" "file:///<pasta>/<ficheiro>.html"
    ```
+   Se não houver Chrome (ex. na app do Claude), gera o PDF a partir do mesmo HTML com uma biblioteca
+   Python (ex. WeasyPrint); se nenhuma estiver disponível, entrega o HTML e diz para imprimir em PDF.
    Abre o PDF (Read) e confirma que o layout está bem e que tem no máximo 2 páginas.
-5. **Guarda na pasta onde a sessão começou**, com o nome `<nome>_cv_<empresa>_<vaga>.html` e `.pdf`
+5. **Guarda na pasta onde a sessão começou** (na app do Claude: entrega para descarregar), com o nome `<nome>_cv_<empresa>_<vaga>.html` e `.pdf`
    (minúsculas, `_` entre palavras). Nunca na pasta desta skill. Se a pasta for um repositório git,
    não faças commit dos CVs (têm telefone e e-mail) e avisa o utilizador.
 6. **Responde com**: o caminho do PDF, o que puseste em destaque e porquê, e as **lacunas que ficaram

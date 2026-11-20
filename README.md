@@ -45,8 +45,16 @@ you ask.
 
 ### Install
 
+**Claude app (claude.ai, desktop, mobile) and Cowork:** open **Customize → Plugins → Discover**,
+search for **Job Match** and add it. Attach your CV to the chat when you ask for jobs. Needs a paid
+plan.
+
+**Claude Code:** run `/plugin directory` and add **Job Match**. To install by hand instead, copy the
+skill folder:
+
 ```bash
-git clone https://github.com/<your-user>/job-match ~/.claude/skills/job-match
+git clone https://github.com/caio-t/job-match
+cp -r job-match/skills/job-match ~/.claude/skills/job-match
 ```
 
 Restart Claude Code (or open a new session) and the skill is available.
@@ -142,6 +150,14 @@ Pedes vagas e o `job-match`:
 
 Por omissão só pesquisa e lista. Nunca se candidata, não preenche formulários nem envia mensagens sem
 pedires.
+
+### Instalar
+
+- **App do Claude (claude.ai, desktop, telemóvel) e Cowork:** em **Customize → Plugins → Discover**,
+  procura **Job Match** e adiciona. Anexa o CV à conversa quando pedires vagas. Precisa de um plano
+  pago.
+- **Claude Code:** corre `/plugin directory` e adiciona **Job Match**, ou copia a pasta
+  `skills/job-match` deste repositório para `~/.claude/skills/job-match`.
 
 ### Exemplos de uso
 
